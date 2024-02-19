@@ -1,0 +1,44 @@
+server:
+  port: 8444
+  servlet:
+    context-path: /documents
+  shutdown: graceful
+
+spring:
+  application:
+    name: code-craft-documents
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+  datasource:
+    url: jdbc:mysql://localhost:3306/docup?autoReconnect=true&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: password
+  flyway:
+    enabled: true
+  hikari:
+    connectionTimeout: 30000
+    idleTimeout: 600000
+    maxLifetime: 1800000
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+management:
+  server:
+    port: 18444
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    redis:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health, sanity, prometheus
+      base-path: /
+  info:
+    env:
+      enabled: true
