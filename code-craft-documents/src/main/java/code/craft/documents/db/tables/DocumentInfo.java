@@ -13,12 +13,12 @@ import java.util.function.Function;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function5;
+import org.jooq.Function6;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row5;
+import org.jooq.Row6;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -70,6 +70,11 @@ public class DocumentInfo extends TableImpl<DocumentInfoRecord> {
      * The column <code>docup.document_info.file_path</code>.
      */
     public final TableField<DocumentInfoRecord, String> FILE_PATH = createField(DSL.name("file_path"), SQLDataType.CLOB, this, "");
+
+    /**
+     * The column <code>docup.document_info.download_url</code>.
+     */
+    public final TableField<DocumentInfoRecord, String> DOWNLOAD_URL = createField(DSL.name("download_url"), SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>docup.document_info.created_date</code>.
@@ -164,18 +169,18 @@ public class DocumentInfo extends TableImpl<DocumentInfoRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row5 type methods
+    // Row6 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<Integer, String, String, String, LocalDateTime> fieldsRow() {
-        return (Row5) super.fieldsRow();
+    public Row6<Integer, String, String, String, String, LocalDateTime> fieldsRow() {
+        return (Row6) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function5<? super Integer, ? super String, ? super String, ? super String, ? super LocalDateTime, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function6<? super Integer, ? super String, ? super String, ? super String, ? super String, ? super LocalDateTime, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -183,7 +188,7 @@ public class DocumentInfo extends TableImpl<DocumentInfoRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function5<? super Integer, ? super String, ? super String, ? super String, ? super LocalDateTime, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function6<? super Integer, ? super String, ? super String, ? super String, ? super String, ? super LocalDateTime, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }
