@@ -1,0 +1,38 @@
+server:
+  port: 8445
+  servlet:
+    context-path: /email
+  shutdown: graceful
+
+spring:
+  application:
+    name: code-craft-email
+  lifecycle:
+    timeout-per-shutdown-phase: 1m
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: "testsendingemail9@gmail.com"
+    password: "sbqe pnwt gdmo sqda"
+#    password: "TestSendingEmail@123456"
+
+management:
+  server:
+    port: 18445
+  health:
+    defaults:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: info, health
+      base-path: /
+  info:
+    env:
+      enabled: true
